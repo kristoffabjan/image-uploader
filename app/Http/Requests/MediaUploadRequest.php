@@ -12,8 +12,6 @@ class MediaUploadRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        //return false;
-        // TODO: add token valiadtion if not specified directly on route
         return true;
     }
 

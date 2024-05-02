@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -26,5 +28,39 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Throwable  $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Throwable
+     */
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof AuthenticationException) {
+
+            return response()->json([
+                'error' => $exception->getMessage(),
+            ], 500); 
+        }
+
+        // Errors fallback - show only general message
+        if ($exception instanceof Throwable) {
+            Log::error($exception->getMessage(), [
+                'line' => $exception->getLine(),
+                'file' => $exception->getFile(),
+            ]);
+
+            return response()->json([
+                'error' => "Something went wrong. Please try again later."
+            ], 500); 
+        }
+
+
+        return parent::render($request, $exception);
     }
 }
