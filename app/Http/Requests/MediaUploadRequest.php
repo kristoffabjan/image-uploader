@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
 
 class MediaUploadRequest extends FormRequest
 {
@@ -12,6 +13,7 @@ class MediaUploadRequest extends FormRequest
     public function authorize(): bool
     {
         //return false;
+        // TODO: add token valiadtion if not specified directly on route
         return true;
     }
 
@@ -25,7 +27,12 @@ class MediaUploadRequest extends FormRequest
         return [
             'title' => 'required|string|max:50',
             'description' => 'required|string|max:200',
-            'media' => 'required|file|mimes:jpeg,png,mp4|max:2048', // adjust max file size as needed
+            'media' => [
+                'required',
+                'file',
+                File::types(['image/jpeg', 'image/png', 'video/mp4'])
+                    ->max(8 * 1024),
+            ],
         ];
     }
 }
