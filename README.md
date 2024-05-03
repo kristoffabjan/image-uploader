@@ -21,18 +21,18 @@ This guide will walk you through the process of setting up and running the proje
     cd <project-directory>
     ```
 
-3. Start the Docker environment(optional if using Docker/Sail):
-
-    ```bash
-    php artisan sail:install
-    ./vendor/bin/sail up
-    ```
-
-4. Install PHP dependencies:
+3. Install PHP dependencies:
 
     ```bash
     composer install
     ```
+
+4. Start the Docker environment(optional if using Docker/Sail):
+
+    ```bash
+    ./vendor/bin/sail up
+    ```
+
 
 5. Copy the environment configuration file:
 
