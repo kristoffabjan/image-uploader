@@ -4,7 +4,7 @@ This guide will walk you through the process of setting up and running the proje
 
 ## Prerequisites
 
-- Docker
+- Server with PHP
 - Composer
 
 ## Getting Started
@@ -21,9 +21,10 @@ This guide will walk you through the process of setting up and running the proje
     cd <project-directory>
     ```
 
-3. Start the Docker environment:
+3. Start the Docker environment(optional if using Docker/Sail):
 
     ```bash
+    php artisan sail:install
     ./vendor/bin/sail up
     ```
 
