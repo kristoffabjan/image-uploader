@@ -26,24 +26,22 @@ This guide will walk you through the process of setting up and running the proje
     ```bash
     composer install
     ```
-
-4. Start the Docker environment(optional if using Docker/Sail):
-
-    ```bash
-    ./vendor/bin/sail up -d
-    ```
-
-
-5. Copy the environment configuration file and change variables according to your needs:
+    
+4. Copy the environment configuration file and change variables according to your needs:
 
     ```bash
     cp .env.example .env
     ```
 
-6. Generate the application key:
+5. Generate the application key:
 
     ```bash
     php artisan key:generate
+    ```
+6. Start the Docker environment(optional if using Docker/Sail):
+
+    ```bash
+    ./vendor/bin/sail up -d
     ```
 
 7. Run database migrations:
