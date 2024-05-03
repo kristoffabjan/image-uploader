@@ -74,12 +74,12 @@ To interact with the API, you need to obtain an access token.
 
     Replace `example@example.com` with the desired email address and `secret_password` with the desired password.
 
-2. Obtain a token via a POST request to `/tokens/create`:
+2. Obtain a token via a POST request to `/api/tokens/create`:
 
     Example:
 
     ```http
-    POST /tokens/create
+    POST /api/tokens/create
     Content-Type: application/json
 
     {
