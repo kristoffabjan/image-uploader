@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
 
             return response()->json([
                 'error' => $exception->getMessage(),
-            ], 500); 
+            ], 401); 
         }
 
         if ($exception instanceof ValidationException) {
