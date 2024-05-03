@@ -30,7 +30,7 @@ This guide will walk you through the process of setting up and running the proje
 4. Start the Docker environment(optional if using Docker/Sail):
 
     ```bash
-    ./vendor/bin/sail up
+    ./vendor/bin/sail up -d
     ```
 
 
