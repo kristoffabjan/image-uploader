@@ -115,7 +115,7 @@ To upload media, use the `/api/media-upload` endpoint with the obtained access t
     }
     ```
 
-    Replace `"path-to-media-file"` with your file.
+    Replace `"media-file"` with your file.
 
     Response:
 
