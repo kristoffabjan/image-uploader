@@ -34,7 +34,7 @@ This guide will walk you through the process of setting up and running the proje
     ```
 
 
-5. Copy the environment configuration file:
+5. Copy the environment configuration file and change variables according to your needs:
 
     ```bash
     cp .env.example .env
