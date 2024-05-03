@@ -23,5 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/tokens/create', [AuthenticationController::class, 'issueToken']);
 
-Route::middleware(['auth:sanctum', 'abilities:media-upload'])
+Route::middleware(['auth:sanctum', 'abilities:media-upload', 'xss-sanitizer'])
     ->post('/media-upload', [MediaController::class, 'store']);
