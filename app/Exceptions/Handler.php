@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -46,6 +47,13 @@ class Handler extends ExceptionHandler
             return response()->json([
                 'error' => $exception->getMessage(),
             ], 500); 
+        }
+
+        if ($exception instanceof ValidationException) {
+            return response()->json([
+                'error' => $exception->getMessage(),
+                'errors' => $exception->errors(),
+            ], 422); 
         }
 
         // Errors fallback - show only general message
